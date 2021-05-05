@@ -37,7 +37,7 @@
                         <label id="author">Ioan Slavici</label>
                     </div>
                     <div class="book-buttons">
-                        <button type="button">Detail</button>
+                        <button type="button"><a href="./book.php?id=<?php ?>">Detail</a></button>
                         <button type="button">Delete</button>
                     </div>
                 </div> 
