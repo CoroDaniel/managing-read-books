@@ -13,7 +13,7 @@ $clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/re
 	$interogare = 'prefix : <http://danielionut.ro#>
 	ASK {?x rdfs:label "'.$_POST['title'].'" ;
 	:hasAuthor "'.$_POST['author'].'";
-	:hasGenre "'.$_POST['genre'].'";
+	:hasGenre <'.$_POST['genre'].'>;
 	:hasComments ?z.
 	?z :userID <'.$_SESSION['userID'].'>.}';
 	$raspuns = $client->query($interogare);
@@ -21,16 +21,14 @@ $clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/re
 	
 if ($raspuns->getBoolean() == TRUE)
 {
-	
-	http_response_code(404);
-	print "You have already inserted the book!";
+	print(404);
 }
 else{
 	// verificare daca a fost deja inserata cartea, pt a nu avea duplicate
 	$interogare = 'prefix : <http://danielionut.ro#>
 	ASK {?x rdfs:label "'.$_POST['title'].'" ;
 	:hasAuthor "'.$_POST['author'].'";
-	:hasGenre "'.$_POST['genre'].'";}';
+	:hasGenre <'.$_POST['genre'].'>;}';
 	$raspuns = $client->query($interogare);
 	
 	
@@ -41,7 +39,7 @@ if ($raspuns->getBoolean() == TRUE)
 	$interogare = 'prefix : <http://danielionut.ro#> 
 	SELECT ?bookID {?bookID rdfs:label "'.$_POST['title'].'" ; 
 	:hasAuthor "'.$_POST['author'].'";
-	:hasGenre "'.$_POST['genre'].'";}';
+	:hasGenre <'.$_POST['genre'].'>;}';
 	$raspuns = $client->query($interogare);
 	foreach($raspuns as $rez)
 	{
@@ -55,9 +53,9 @@ prefix : <http://danielionut.ro#>
 INSERT DATA{
 <'.$_SESSION['userID'].'> :likes <'.$bookID.'>.
    <'.$bookID.'> :hasComments [:userID <'.$_SESSION['userID'].'>;
-				  :comment "'.$_POST['comments'].'"]}';
+				  :comment "'.$_POST['comment'].'"]}';
 
-print $clientUpdate->update($interogareUpdate);
+print $clientUpdate->update($interogareUpdate)->getStatus();
 
 
 }
@@ -74,14 +72,14 @@ INSERT{
 ?bookID a :Book; 
 	  rdfs:label "'.$_POST['title'].'";
     	  :hasAuthor "'.$_POST['author'].'";
-       	  :hasGenre "'.$_POST['genre'].'";
-          :hasComments [:userID <'.$_SESSION['userID'].'>; :comment "'.$_POST['comments'].'"]
+       	  :hasGenre <'.$_POST['genre'].'>;
+          :hasComments [:userID <'.$_SESSION['userID'].'>; :comment "'.$_POST['comment'].'"]
 }
 WHERE{
 	BIND(IRI(CONCAT("http://danielionut.ro#'.$bookID.'")) AS ?bookID)
 }';
 
-print $clientUpdate->update($interogareUpdate);
+print $clientUpdate->update($interogareUpdate)->getStatus();
 
 }
 }

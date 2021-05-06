@@ -12,10 +12,7 @@ $interogare="prefix : <http://danielionut.ro#> ASK {?x :hasEmail '".$_POST['emai
 $raspuns = $client->query($interogare);
 if ($raspuns->getBoolean() == TRUE)
 {
-
-	http_response_code(404);
-	print "Insert another email adress!";
-	exit;
+	print(404);	
 }
 else 
 {
@@ -32,8 +29,6 @@ else
 							BIND(IRI('http://danielionut.ro#".trim(str_replace(" ","",$_POST['name'])).bin2hex(random_bytes(2))."') AS ?id)
 							}";
 	
-	print $clientUpdate->update($interogareUpdate);
-
-	
+	print $clientUpdate->update($interogareUpdate)->getStatus();	
 	}
 ?>
