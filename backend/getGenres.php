@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 header("Content-type:application/json");
 
-$client = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/graftest');
+$client = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/grafexamen');
 $deTrimis = array();
 
 $interogare = 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>

@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 
 header("Content-type:text/plain");
 
-$clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/graftest/statements');
+$clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/grafexamen/statements');
 
 	// actualizare comentariu
 	$interogareUpdate = '

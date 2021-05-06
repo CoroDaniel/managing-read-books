@@ -14,6 +14,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+        <script>
+            //get form data
+            $(function () {
+                $('button').on('click', function () {
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+                    var hashPassword = CryptoJS.MD5(password);
+                    console.log(email, password, hashPassword);
+                    alert(hashPassword);
+                })
+            });
+        </script>
+        
         <header>
             <nav>
                 <?=navbar() ?> 
@@ -41,18 +55,5 @@
                 <p>&#169;Copyright 2021 by Ionut and Daniel. All Rights Reserved.</p>
             </div>
         </footer>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
-        <script>
-            //get form data
-            $(function () {
-                $('button').on('click', function () {
-                    var email = $('#email').val();
-                    var password = $('#password').val();
-                    var hashPassword = CryptoJS.MD5(password);
-                    console.log(email, password, hashPassword);
-                    alert(hashPassword);
-                })
-            });
-        </script>
     </body>
 </html>
