@@ -6,8 +6,8 @@ require 'vendor/autoload.php';
 
 header("Content-type:text/plain");
 
-$client = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/graftest');
-$clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/graftest/statements');
+$client = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/grafexamen');
+$clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/repositories/grafexamen/statements');
 
 	// verifica daca s-a inserat deja cartea și daca a atașat un comentariu
 	$interogare = 'prefix : <http://danielionut.ro#>

@@ -3,7 +3,7 @@ session_start();
 
 require 'vendor/autoload.php';
 
-$client= new EasyRdf\Sparql\Client("http://localhost:8080/rdf4j-server/repositories/graftest");
+$client= new EasyRdf\Sparql\Client("http://localhost:8080/rdf4j-server/repositories/grafexamen");
 
 // verificare existenta utilizator pe baza de email si parola
 $interogare="prefix : <http://danielionut.ro#> ASK {?x :hasEmail '".$_POST['email']."'; :hasPassword '".$_POST['password']."'}";

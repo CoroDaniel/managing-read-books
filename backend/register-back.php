@@ -4,8 +4,8 @@ require 'vendor/autoload.php';
 
 header("Content-type:text/plain");
 
-$client=new EasyRdf\Sparql\Client("http://localhost:8080/rdf4j-server/repositories/graftest");
-$clientUpdate = new EasyRdf\Sparql\Client("http://localhost:8080/rdf4j-server/repositories/graftest/statements");
+$client=new EasyRdf\Sparql\Client("http://localhost:8080/rdf4j-server/repositories/grafexamen");
+$clientUpdate = new EasyRdf\Sparql\Client("http://localhost:8080/rdf4j-server/repositories/grafexamen/statements");
 
 // verificare existenta utilizator, daca emailul este folosit
 $interogare="prefix : <http://danielionut.ro#> ASK {?x :hasEmail '".$_POST['email']."'}";
@@ -26,7 +26,7 @@ else
 							{?id a :Person;
 						rdfs:label '".trim($_POST['name'])."'; 
 							:hasEmail '".$_POST['email']."';
-							:hasPassword '".$_POST['password']."'.
+							:hasPassword '".md5($_POST['password'])."'.
 							}
 							WHERE{
 							BIND(IRI('http://danielionut.ro#".trim(str_replace(" ","",$_POST['name'])).bin2hex(random_bytes(2))."') AS ?id)
