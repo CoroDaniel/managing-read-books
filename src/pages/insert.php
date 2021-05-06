@@ -11,6 +11,7 @@
         <title>Add Book</title>
         <link rel="stylesheet" href="../css/insert.css">
         <link rel="stylesheet" href="../css/header-page.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
@@ -24,9 +25,9 @@
                     <p id="ins">Add Book</p>
                 </div>
                 <div class="insert-content">
-                    <input type="text" name="title" placeholder="Title">
-                    <input type="text" name="author" placeholder="Author">
-                    <textarea placeholder="Summary/Comments"></textarea>
+                    <input type="text" id="title" name="title" placeholder="Title">
+                    <input type="text" id="author" name="author" placeholder="Author">
+                    <textarea id="comment" placeholder="Summary/Comments"></textarea>
                     <select name="categories" id="categ">
                         <option value="Classic">Classic</option>
                         <option value="Roman">Roman</option>
@@ -42,6 +43,16 @@
                 <p>&#169;Copyright 2021 by Ionut and Daniel. All Rights Reserved.</p>
             </div>
         </footer>
-        <script src=""></script>
+        <script>
+            //get form data
+            $(function () {
+                $('button').on('click', function () {
+                    var title = $('#title').val();
+                    var author = $('#author').val();
+                    var comment = $('#comment').val();
+                    var categ = $('#categ option:selected').text();
+                })
+            });
+        </script>
     </body>
 </html>
