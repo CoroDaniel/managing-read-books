@@ -60,10 +60,11 @@
                 <form id="insert-content">
                     <input type="text" id="title" name="title" placeholder="Title">
                     <input type="text" id="author" name="author" placeholder="Author">
-                    <textarea id="comment" placeholder="Summary/Comments"></textarea>
+                    <textarea id="comment" name="comment" placeholder="Summary/Comments"></textarea>
                     <select  id="categ" name="genre">
                         <!-- dynamic options -->
                     </select>
+                    </form>
                 </div>
                 <button type="submit" id="insert-submit" onclick="trimite()">Submit</button>
             </div>
@@ -82,7 +83,7 @@
                     var comment = $('#comment').val();
                     var categ = $('#categ option:selected').text();
                 })
-            }); -->
-        </script>
+            }); 
+        </script> -->
     </body>
 </html>

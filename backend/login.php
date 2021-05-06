@@ -16,7 +16,7 @@ foreach ($rezultat as $property)
 {
 	// salvare in sesiune a id utilizator logat
 	$_SESSION['name'] = $property->nume;
-	$_SESSION['userID'] = $property->id;
+	$_SESSION['userID'] = $property->id.'';
 	$_SESSION['email'] = $_POST['email'];
 
 }
