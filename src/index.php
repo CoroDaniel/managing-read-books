@@ -16,17 +16,21 @@
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
         <script>
-            //get form data
-            $(function () {
-                $('button').on('click', function () {
-                    var email = $('#email').val();
-                    var password = $('#password').val();
-                    var hashPassword = CryptoJS.MD5(password);
-                    console.log(email, password, hashPassword);
-                    alert(hashPassword);
-                })
-            });
-        </script>
+            function trimite(codpostal)
+            {
+                adresa="../backend/login.php"
+                dateDeTrimis=$('#login-content').serializeArray();
+                $.post(adresa, dateDeTrimis, procesareRaspuns);
+            }
+            function procesareRaspuns(raspuns)
+	        { 
+                if(raspuns==200){
+                    window.location.href = 'pages/books.php';	    
+                }else{
+                    console.log(raspuns);
+                }
+            }
+        </script>   
         
         <header>
             <nav>
@@ -42,11 +46,11 @@
                 <div class="login-header">
                     <a id="log">Login</a> | <a href="./pages/register.php" id="reg">Register</a>
                 </div>
-                <div class="login-content">
-                    <input type="text" id="email" name="email" placeholder="Email">
-                    <input type="password" id="password" name="password" placeholder="Password">
-                    <button type="submit" id="login-submit">Submit</button>
-                </div>
+                <form id="login-content">
+                    <input type="email" id="email" name="email" placeholder="Email" require>
+                    <input type="password" id="password" name="password" placeholder="Password" require>
+                </form>
+                <button type="submit" id="login-submit" onclick='trimite()'>Submit</button>
             </div>
         </main>
 

@@ -16,7 +16,7 @@
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
         <script>
-        function trimite(codpostal)
+        function trimite(user)
         {
             adresa="../../backend/register-back.php"
             dateDeTrimis=$('#register-content').serializeArray();
@@ -24,8 +24,12 @@
         }
         function procesareRaspuns(raspuns)
 	    {
-	        $('#register-content').html(raspuns);
-	    }
+            if(raspuns==204){
+                window.location.href = '../index.php';	    
+            }else{
+                console.log(raspuns);
+            }
+        }
         </script>   
 
         <header>
@@ -40,11 +44,11 @@
                     <a href="../index.php" id="log">Login</a> | <a id="reg">Register</a>
                 </div>
                 <form id="register-content">
-                    <input type="text" id="username" name="name" placeholder="Username">
-                    <input type="text" id="email" name="email" placeholder="Email">
-                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="text" id="username" name="name" placeholder="Username" require>
+                    <input type="email" id="email" name="email" placeholder="Email" require>
+                    <input type="password" id="password" name="password" placeholder="Password" require>
                 </form>
-                <button type="submit" id="login-submit" onmouseover="trimite()">Submit</button>
+                <button type="submit" id="login-submit" onclick="trimite()">Submit</button>
             </div>
         </main>
 

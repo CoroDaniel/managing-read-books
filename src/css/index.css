@@ -19,6 +19,11 @@ main {
     align-content: center;
 }
 
+.intro{
+    padding-top:5%;
+    text-align: center;
+    background-color:#897853 ;
+}
 
 .login-form{
     background-color: #897853;
