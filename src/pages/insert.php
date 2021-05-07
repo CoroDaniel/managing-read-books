@@ -72,7 +72,7 @@
                     </select>
                 </form>
             <div class="final-form">
-                <button type="submit" id="insert-submit" onclick="trimite()">Submit</button>
+                <button type="submit" id="insert-submit" onmouseover="trimite()">Submit</button>
                 <p id="error-message" style="display:none;">The book couldn't be added!</p>
             </div>
         </main>

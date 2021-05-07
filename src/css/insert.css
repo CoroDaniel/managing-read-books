@@ -36,6 +36,7 @@ main {
 .insert-form .insert-header{
     color: white;
     font-size: 20px;
+    padding-bottom: 4%;
 }
 
 .insert-form #ins{
