@@ -18,9 +18,13 @@
         <script>
         function trimite(user)
         {
-            adresa="../../backend/register-back.php"
-            dateDeTrimis=$('#register-content').serializeArray();
-            $.post(adresa, dateDeTrimis, procesareRaspuns);
+            if(email.length>0 && pass.length>0){
+                adresa="../../backend/register-back.php"
+                dateDeTrimis=$('#register-content').serializeArray();
+                $.post(adresa, dateDeTrimis, procesareRaspuns);
+            }else{
+                document.getElementById('error-message').style = 'display:visible; color:white; padding-bottom:1%';
+            }
         }
         function procesareRaspuns(raspuns)
 	    {
@@ -55,6 +59,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" require>
                 </form>
                 <button type="submit" id="register-submit" onclick="trimite()">Submit</button>
+                <p id="error-message" style="display:none;">Fill in all the fields!</p>
             </div>
         </main>
 
