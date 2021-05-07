@@ -3,7 +3,7 @@
     function navbar(){
         echo <<<EOT
             <ul class="logo-content">
-                <li class="logo"><a href="../index.php"><img src="../assets/images/logo.png" alt="book-logo"></a></li>
+                <li class="logo"><a href="../../backend/logout.php"><img src="../assets/images/logo.png" alt="book-logo"></a></li>
             </ul>
             <ul>
 EOT;

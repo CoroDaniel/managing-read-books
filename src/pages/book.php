@@ -46,6 +46,7 @@
             function procesareRaspunsUpdate(raspuns){
                 if(raspuns==204 || raspuns==200){
                     // window.location.href = './books.php';
+                    document.getElementById('succes-update').style = 'display:visible;';
                     console.log(raspuns);                    	    
                 }else{
                     console.log(raspuns);
@@ -90,8 +91,8 @@
                         <input type="text" style="display:none;" name="id" id="hidden-id">
                         <textarea placeholder="No comment/summary" name="comment" id="comment">Acțiune începe cu Ghiță, Ana și mama Anei care stau și discută dacă să ia în arendă Moara cu Noroc. În final se decid să o ia deoarece nu mai voiau să trăiască o viață de cârpaci.</textarea>
                     </form>
-
                     <button type="button" id="update-button" onclick="trimite()">Update</button>
+                    <p id="succes-update" style="display:none">Update succesfully!</p>
                 </div>
             </div>
         </main>
