@@ -1,5 +1,9 @@
 <?php
-    require_once "../components/header-page.php"
+    require_once "../components/header-page.php";
+
+    if (!isset($_SESSION['email'])){
+        header('Location:../index.php');
+    }
 ?>
 
 <!DOCTYPE html>

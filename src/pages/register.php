@@ -39,8 +39,8 @@
         </header>
 
         <main>
-            <div class="login-form">
-                <div class="login-header">
+            <div class="register-form">
+                <div class="register-header">
                     <a href="../index.php" id="log">Login</a> | <a id="reg">Register</a>
                 </div>
                 <form id="register-content">
@@ -48,7 +48,7 @@
                     <input type="email" id="email" name="email" placeholder="Email" require>
                     <input type="password" id="password" name="password" placeholder="Password" require>
                 </form>
-                <button type="submit" id="login-submit" onclick="trimite()">Submit</button>
+                <button type="submit" id="register-submit" onclick="trimite()">Submit</button>
             </div>
         </main>
 
