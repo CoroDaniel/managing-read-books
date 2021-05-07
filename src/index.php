@@ -18,8 +18,8 @@
         <script>
             function trimite(codpostal)
             {
-                let email = document.getElementById('email');
-                let pass = document.getElementById('password');
+                let email = document.getElementById('email').value;
+                let pass = document.getElementById('password').value;
                 
                 if(email.length>0 && pass.length>0){
                     adresa="../backend/login.php"
