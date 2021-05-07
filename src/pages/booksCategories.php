@@ -15,24 +15,30 @@
     </head>
     <body>
         <script>
+            //for delete book
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const idBook = urlParams.get('delete');
 
-                //for delete book
+            if(idBook){
+                console.log(idBook);
+                adresaDelete=`../../backend/deleteBook.php?delete=${idBook}`;    
+                $.get(adresaDelete);
+                // window.location.href = './books.php';
+            }
+            else{
+                console.log('Error delete');
+            }
+
+
+            $(document).ready(function() {
                 const queryString = window.location.search;
                 const urlParams = new URLSearchParams(queryString);
                 const idCateg = urlParams.get('id')
 
-                if(idCateg){
-                    adresaDelete=`../../backend/deleteBook.php?delete=${idCateg}`;    
-                    $.get(adresaDelete);
-                }
-                else{
-                    console.log('Error delete');
-                }
-
-            //on load page
-            $(document).ready(function() {
-                adresa="../../backend/getBooks.php";
+                adresa="../../backend/getBooksPerCategories.php?id="+idCateg;
                 adresaCategories = "../../backend/getCategories.php";
+
                 $.get(adresa, procesareRaspuns);
                 $.get(adresaCategories, procesareRaspunsCategories);
             });
@@ -58,11 +64,14 @@
                     titleLabel.setAttribute('id', 'title');
                     authorLabel.setAttribute('id', 'author');
 
-
                     const bookID = book.id.split('#');
 
+                    const queryString2 = window.location.search;
+                    const urlParams2 = new URLSearchParams(queryString2);
+                    const idCateg2 = urlParams2.get('id')
+
                     aDetail.setAttribute('href', './book.php?id='+bookID[1]);
-                    aDelete.setAttribute('href', './books.php?id='+bookID[1]);
+                    aDelete.setAttribute('href', `./booksCategories.php?id=${idCateg2}&delete=${bookID[1]}`);
                     detailsButton.setAttribute('type', 'button');
                     deleteButton.setAttribute('type', 'button');                    
 
@@ -125,7 +134,7 @@
                         <label id="author">Ioan Slavici</label>
                     </div>
                     <div class="book-buttons">
-                        <button type="button"><a href="./book.php?id=...">Detail</a></button>
+                        <button type="button"><a href="./book.php?id=<?php ?>">Detail</a></button>
                         <button type="button">Delete</button>
                     </div>
                 </div>  -->

@@ -16,13 +16,15 @@ SELECT ?opera ?title ?author WHERE
 {
     <'.$_SESSION['userID'].'> :likes ?opera.
 	?opera rdfs:label ?title;
-    		:hasAuthor ?author.
+    		:hasAuthor ?author;
+            :hasGenre <'.$_GET['id'].'>.
 }';
 $rezultat = $client->query($interogare);
 
 foreach($rezultat as $rez)
 {
-	array_push($deTrimis, array('id' => ''.$rez->opera,
+	array_push($deTrimis, array(
+    'id' => ''.$rez->opera,
 	'title'=>''.$rez->title,
 	'author'=>''.$rez->author
 	));

@@ -15,7 +15,7 @@ $check ='';
 $interogare = 'prefix : <http://danielionut.ro#>
 SELECT (COUNT(?z) AS ?nr) WHERE
 {
-  <http://danielionut.ro#'.$_GET['id'].'> :hasComments ?z.
+  <http://danielionut.ro#'.$_GET['delete'].'> :hasComments ?z.
 }';
 
 $raspuns = $client->query($interogare);
@@ -31,14 +31,14 @@ if ($check > 1)
 	$interogareUpdate = 'prefix : <http://danielionut.ro#>
 	
 	DELETE{
-		<'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['id'].'>.
-		<http://danielionut.ro#'.$_GET['id'].'> :hasComments ?z.
+		<'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['delete'].'>.
+		<http://danielionut.ro#'.$_GET['delete'].'> :hasComments ?z.
 		?z :userID <'.$_SESSION['userID'].'>;
 		   :comment ?x.}
 	WHERE
 	{
-		<'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['id'].'>.
-		<http://danielionut.ro#'.$_GET['id'].'> :hasComments ?z.
+		<'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['delete'].'>.
+		<http://danielionut.ro#'.$_GET['delete'].'> :hasComments ?z.
 		?z :userID <'.$_SESSION['userID'].'>;
 		   :comment ?x.
 	}';	
@@ -51,8 +51,8 @@ prefix : <http://danielionut.ro#>
 	
 	DELETE
 	{   
- <'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['id'].'>.
-		<http://danielionut.ro#'.$_GET['id'].'> rdfs:label ?title;
+ <'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['delete'].'>.
+		<http://danielionut.ro#'.$_GET['delete'].'> rdfs:label ?title;
 							  :hasAuthor ?author;    
     						  :hasGenre ?genre;						  
    							  :hasComments ?anonym.
@@ -60,8 +60,8 @@ prefix : <http://danielionut.ro#>
 }
 	WHERE
 	{
-		<'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['id'].'>.
-		<http://danielionut.ro#'.$_GET['id'].'> rdfs:label ?title;
+		<'.$_SESSION['userID'].'> :likes <http://danielionut.ro#'.$_GET['delete'].'>.
+		<http://danielionut.ro#'.$_GET['delete'].'> rdfs:label ?title;
 							  :hasAuthor ?author;    
     						  :hasGenre ?genre;						  
    							  :hasComments ?anonym.

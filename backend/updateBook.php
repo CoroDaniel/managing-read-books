@@ -13,21 +13,21 @@ $clientUpdate = new EasyRdf\Sparql\Client('http://localhost:8080/rdf4j-server/re
 prefix : <http://danielionut.ro#> 
 							
 DELETE{
-   <http://danielionut.ro#'.$_GET['id'].'> :hasComments ?z.
+   <http://danielionut.ro#'.$_POST['id'].'> :hasComments ?z.
     ?z :userID <'.$_SESSION['userID'].'>;
 	   :comment ?x.
 }
 INSERT{
-  <http://danielionut.ro#'.$_GET['id'].'> :hasComments ?z.
+  <http://danielionut.ro#'.$_POST['id'].'> :hasComments ?z.
      ?z :userID <'.$_SESSION['userID'].'>;
-      :comment "'.$_GET['comment'].'".
+      :comment "'.$_POST['comment'].'".
 }
 WHERE{
-:<http://danielionut.ro#'.$_GET['id'].'> :hasComments ?z.
+<http://danielionut.ro#'.$_POST['id'].'> :hasComments ?z.
     ?z :userID <'.$_SESSION['userID'].'>;
 	   :comment ?x.
 }';
 
-print $clientUpdate->update($interogareUpdate);	
+print $clientUpdate->update($interogareUpdate)->getStatus();	
 
 ?>

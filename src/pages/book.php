@@ -12,8 +12,48 @@
         <title>Book Details</title>
         <link rel="stylesheet" href="../css/book.css">
         <link rel="stylesheet" href="../css/header-page.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
+        <script>
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const idBook = urlParams.get('id');
+
+            $(document).ready(function() {
+                adresa=`../../backend/getBook.php?id=${idBook}`;
+                $.get(adresa, procesareRaspuns);
+            });
+
+            function procesareRaspuns(raspuns) {
+                document.getElementById('det').innerText = raspuns.title;
+                document.getElementById('author').innerText = raspuns.author;
+                document.getElementById('category').innerText = raspuns.genre;
+                document.getElementById('comment').innerText = raspuns.comment;
+                var idBookHidden = document.getElementById('hidden-id');
+                idBookHidden.setAttribute('value', raspuns.id);
+            }
+
+
+            //update
+            function trimite(comment){
+                adresa="../../backend/updateBook.php";
+                dateDeTrimis=$('#update-form').serializeArray();
+                // console.log(dateDeTrimis);
+                $.post(adresa, dateDeTrimis, procesareRaspunsUpdate);
+            }
+
+            function procesareRaspunsUpdate(raspuns){
+                if(raspuns==204 || raspuns==200){
+                    // window.location.href = './books.php';
+                    console.log(raspuns);                    	    
+                }else{
+                    console.log(raspuns);
+                }
+            }
+
+        </script>
+
         <header>
             <nav>
                 <?=navbar() ?> 
@@ -25,20 +65,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-book" viewBox="0 0 16 16">
                         <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
                     </svg>
-                    <span id="det">Moara cu noroc</span>
+                    <span id="det"> </span>
                 </div>
                 <div class="details-content">
                     <div class="info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-pen" viewBox="0 0 16 16">
                             <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
                         </svg> Author:          
-                        <span>Ioan Slavici</span>
+                        <span id="author"> </span>
                     </div>
                     <div class="info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-bookmark" viewBox="0 0 16 16">
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                         </svg> Book category:          
-                        <span>Classic</span>
+                        <span id="category"></span>
                     </div><br>
                     <div class="info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -46,7 +86,12 @@
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                         </svg> Your comment/summary:          
                     </div>
-                    <textarea placeholder="No comment/summary">Acțiune începe cu Ghiță, Ana și mama Anei care stau și discută dacă să ia în arendă Moara cu Noroc. În final se decid să o ia deoarece nu mai voiau să trăiască o viață de cârpaci.</textarea>
+                    <form id="update-form">
+                        <input type="text" style="display:none;" name="id" id="hidden-id">
+                        <textarea placeholder="No comment/summary" name="comment" id="comment">Acțiune începe cu Ghiță, Ana și mama Anei care stau și discută dacă să ia în arendă Moara cu Noroc. În final se decid să o ia deoarece nu mai voiau să trăiască o viață de cârpaci.</textarea>
+                    </form>
+
+                    <button type="button" id="update-button" onclick="trimite()">Update</button>
                 </div>
             </div>
         </main>
@@ -55,6 +100,5 @@
                 <p>&#169;Copyright 2021 by Ionut and Daniel. All Rights Reserved.</p>
             </div>
         </footer>
-        <script src=""></script>
     </body>
 </html>
