@@ -82,6 +82,11 @@ main {
 .insert-form select {
     color: rgba(255, 255, 255, 0.596);
 }
+
+.final-form p{
+    padding-bottom: 3%;
+    color: rgb(161, 0, 0);
+}
  
 
 

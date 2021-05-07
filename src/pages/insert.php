@@ -30,7 +30,7 @@
                     div.appendChild(option);
                 });
             }
-
+            
             function trimite(book){
                 adresa="../../backend/insertBook.php"
                 dateDeTrimis=$('#insert-content').serializeArray();
@@ -39,8 +39,10 @@
 
             function procesareRaspunsInsert(raspuns){
                 if(raspuns==204){
+                    window.location.href = './books.php';
                     console.log(raspuns);                    	    
                 }else{
+                    document.getElementById('error-message').style = 'display:visible;';
                     console.log(raspuns);
                 }
             }
@@ -64,9 +66,10 @@
                     <select  id="categ" name="genre">
                         <!-- dynamic options -->
                     </select>
-                    </form>
-                </div>
+                </form>
+            <div class="final-form">
                 <button type="submit" id="insert-submit" onclick="trimite()">Submit</button>
+                <p id="error-message" style="display:none;">The book couldn't be added!</p>
             </div>
         </main>
         <footer>
