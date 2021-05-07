@@ -38,9 +38,12 @@
             </nav>
         </header>
 
-        <!-- <div class="intro">
-                This application is intended to manage the books you read.
-        </div> -->
+        <div class="intro">
+                <p>This application is intended to manage the books you read.</p><br>
+                <p>Step 1: Create an accoun in register.</p>
+                <p>Step 2: Logged in to the created account.</p>
+                <p>Step 3: Add a read book.</p>
+        </div>
         <main>
             <div class="login-form">
                 <div class="login-header">
