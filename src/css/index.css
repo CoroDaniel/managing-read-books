@@ -37,6 +37,7 @@ main {
 .login-form .login-header{
     color: white;
     font-size: 20px;
+    padding-bottom: 5%;
 }
 
 .login-form #log{
