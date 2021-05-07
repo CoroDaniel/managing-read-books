@@ -21,6 +21,7 @@
             const idBook = urlParams.get('delete');
 
             if(idBook){
+                console.log(idBook);
                 adresaDelete=`../../backend/deleteBook.php?delete=${idBook}`;    
                 $.get(adresaDelete);
                 // window.location.href = './books.php';
@@ -65,8 +66,12 @@
 
                     const bookID = book.id.split('#');
 
+                    const queryString2 = window.location.search;
+                    const urlParams2 = new URLSearchParams(queryString2);
+                    const idCateg2 = urlParams2.get('id')
+
                     aDetail.setAttribute('href', './book.php?id='+bookID[1]);
-                    aDelete.setAttribute('href', `./booksCategories.php?delete=${bookID[1]}`);
+                    aDelete.setAttribute('href', `./booksCategories.php?id=${idCateg2}&delete=${bookID[1]}`);
                     detailsButton.setAttribute('type', 'button');
                     deleteButton.setAttribute('type', 'button');                    
 
