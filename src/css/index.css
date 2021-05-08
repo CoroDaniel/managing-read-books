@@ -13,14 +13,17 @@ a{
 }
 
 main {
-    min-height: 82.5vh;
+    min-height: 58.5vh;
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
 .intro{
-    padding-top:5%;
+    padding-top:2%;
+    padding-bottom: 2%;
+    color: white;
+    font-size: 20px;
     text-align: center;
     background-color:#897853 ;
 }
@@ -29,7 +32,7 @@ main {
     background-color: #897853;
     width: 30%;
     height: 50%;
-    margin-top: 5%;
+    margin-top: 3%;
     padding-top: 2%;
     text-align: center;
 }

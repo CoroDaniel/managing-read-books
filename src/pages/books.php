@@ -90,6 +90,7 @@
                var allCategories = document.getElementById('categories');
               
                raspuns.forEach(function callbackFn(category) { 
+                 
                    var liCateg = document.createElement('li');
                    var aCateg = document.createElement('a');
 
@@ -118,17 +119,17 @@
             </div> 
             <div class="books-list" id="books-list">
                 
-                <!-- Modelul creat mai sus in JavaScript: -->
+                <!-- Structura unei carti create mai sus in JavaScript este de forma: -->
                 <!-- <div class="book-item">
-                    <div class="book-info">
-                        <label id="title">Moara cu noroc</label>
-                        <label id="author">Ioan Slavici</label>
-                    </div>
-                    <div class="book-buttons">
-                        <button type="button"><a href="./book.php?id=...">Detail</a></button>
-                        <button type="button">Delete</button>
-                    </div>
-                </div>  -->
+                        <div class="book-info">
+                            <label id="title">Title</label>
+                            <label id="author">Author</label>
+                        </div>
+                        <div class="book-buttons">
+                            <button type="button"><a href="./book.php?id=...">Detail</a></button>
+                            <button type="button">Delete</button>
+                        </div>
+                    </div>  -->
 
             </div>   
         </main>

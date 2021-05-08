@@ -18,9 +18,17 @@
         <script>
         function trimite(user)
         {
-            adresa="../../backend/register-back.php"
-            dateDeTrimis=$('#register-content').serializeArray();
-            $.post(adresa, dateDeTrimis, procesareRaspuns);
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let pass = document.getElementById('password').value;
+
+            if(username.length>0 && email.length>0 && pass.length>0){
+                adresa="../../backend/register-back.php"
+                dateDeTrimis=$('#register-content').serializeArray();
+                $.post(adresa, dateDeTrimis, procesareRaspuns);
+            }else{
+                document.getElementById('error-message').style = 'display:visible; color:white; padding-bottom:1%';
+            }
         }
         function procesareRaspuns(raspuns)
 	    {
@@ -38,6 +46,12 @@
             </nav>
         </header>
 
+        <div class="intro">
+            <p>This application is intended to manage the books you read.</p><br>
+            <p>Step 1: Create an accoun in register.</p>
+            <p>Step 2: Logged in to the created account.</p>
+            <p>Step 3: Add a read book.</p>
+        </div>
         <main>
             <div class="register-form">
                 <div class="register-header">
@@ -49,6 +63,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" require>
                 </form>
                 <button type="submit" id="register-submit" onclick="trimite()">Submit</button>
+                <p id="error-message" style="display:none;">Fill in all the fields!</p>
             </div>
         </main>
 
